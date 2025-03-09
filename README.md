@@ -1,0 +1,1844 @@
+# การใช้งาน ESP32 CAM ร่วมกับ UI Web Server (Module ov2640)
+
+ESP32 CAM โดยปกติจะสามารถใช้ร่วมกับ Arduino IDE ในการอัปโหลดโค้ดและรันคำสั่งการทำงาน ของตัวโปรแกรม
+
+การใช้งานจะกับบอร์ดเวอร์ชั่น 2.0.5 ต้องทำการอัปเดตหรือdownเกรด เป็นเวอร์ชั่น 2.0.5 โดยมีขั้นตอนดังนี้
+
+1. ให้ไปที่ File > Preferences
+
+    ![Preference](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202025-03-08%20152601.png?raw=true)
+
+2. คลิกที่ Additional Boards Manager URLs
+    
+    ![Additional Boards Manager URLs](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202025-03-08%20152626.png?raw=true)
+
+3. ใส่ URLs ตามภาพ
+
+    ![URLs](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202025-03-08%20152814.png?raw=true)
+
+4. ไปที่ Tool > Board > Board Manager 
+
+    ![Board Manager](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202025-03-08%20153546.png?raw=true)
+
+5. ใน Board Manager พิมพ์ค้นหา คำว่า
+    > ESP32
+    เลือกเวอชั่นเป็น 2.0.5 ตอนติดตั้ง
+
+    ![esp32](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202025-03-08%20154136.png?raw=true)
+
+6. ตั้งค่า Board ,Partition Scheme และ Port 
+
+    ![setting](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202025-03-08%20154849.png?raw=true)
+
+**กรณีต้องการที่จะดูขั้นตอนการทำงานแบบละเอียดแนะนําดูผ่าน TY ได้ที่** _[แนะนำ การใช้งาน ESP32cam](https://youtu.be/6SAs3mDQUEY?si=hDIwIpUNRChpVU5i)_
+
+---
+>โดยหลังจากนั้นให้download file CameraWebServerVersion2.0.5_OldCode
+>ลงเครื่องเก็บไว้ที่ ไดเรกทอรีตรงไหนก็ได้ ถ้าให้ดีเก็บไว้ที่ ไดเรกทอรี่หลัก "C:\Users\USER\Documents\Arduino" 
+>เปิด openflie เลือกจากไดเรกทอรีดังกล่าวมา จากนั้นตั้งค่า ssid กับ password ให้เรียบร้อยแล้วกดอัปโหลด และต่อปลั๊ก
+
+---
+### เปิดฮอตสปอตมือถือ
+![hotspot](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202025-03-09%20062504.png?raw=true)
+ตั้งค่า Name และ Password ให้ตรงกับ ssid กับ Password 
+
+รอการเชื่อมต่อกับบอร์ด ESP32
+![connect](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/46c82264-c6f8-4cb8-942d-b76046bd172c.jpg?raw=true)
+หรือผ่านการเชื่อมต่อ Serial Monitor
+![connnect2](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/Screenshot%202024-02-14%20140352.png?raw=true)
+
+คัลลอก IPAdress ของESP32 และวาง
+
+![IPAdress](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/26d7a9ee-91e7-4539-8565-f9e85e46e303.jpg?raw=true)
+
+เมื่อคัดลอกแล้วให้วางเลข IPAdress ESP32 ซึ่งวางที่เว็ปเบาวเซอร์ 
+> "**_ถ้าจะให้แสดงผลในมือถือให้เชื่อมต่อฮอตสปอนที่เปิดไว้ด้วย_**"
+
+![IPAdress2](https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/08d424b2-b507-4634-85d1-234e05c74790.jpg?raw=true)
+
+# ภาพ UI แบบใหม่ทั้งหมด Ver. Thai
+![pic1][pic1] ![pic2][pic2] ![pic3][pic3] ![pic4][pic4] ![pic5][pic5] ![pic6][pic6] ![pic7][pic7] ![pic8][pic8] ![pic9][pic9] ![pic10][pic10] ![pic11][pic11]
+
+[pic1]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/2a67a20c-8a1f-4657-8ba9-79c6f7bddbde.jpg?raw=true
+[pic2]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/3f698bc7-620a-44a3-8984-befdc58ec70d.jpg?raw=true
+[pic3]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/410f68d9-eb93-428d-ab04-f8b385bd290b.jpg?raw=true
+[pic4]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/90b1382c-478b-49cf-8bd9-9a87e30027ea.jpg?raw=true
+[pic5]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/Screenshot%202025-02-10%20160432.png?raw=true
+[pic6]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/Screenshot%202025-02-11%20132438.png?raw=true
+[pic7]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/Screenshot%202025-02-11%20134738.png?raw=true
+[pic8]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/Screenshot%202025-02-11%20134751.png?raw=true
+[pic9]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/ceafc405-44e5-401f-b44b-ce5a29bbd1ab.jpg?raw=true
+[pic10]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/da7cfd42-fca6-47ab-99d4-e9d68638528a.jpg?raw=true
+[pic11]:https://github.com/Lindist/ESP32-CAM-UI-Beauty/blob/main/picture/new_UI_ESP32Cam/08d424b2-b507-4634-85d1-234e05c74790.jpg?raw=true
+
+# ตัวอย่างโค้ด HTML ที่ใช้
+โค้ดนี้จะฝังไว้ใน ไฟล์ camera_index.h ใช้ร่วมกับกล้อง ov2640 เป็นเลขฐาน 16 ในตัวแปร Array index_ov2640_html_gz 
+```html
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/OIP.O7cshxrQBo7Tb3nvJ41UUwAAAA?w=122&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+        <title>ESP32 CAM For FPV Drone Only</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=settings" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@latest/dist/ffmpeg.min.js"></script> -->
+        <style>
+          *{
+            box-sizing: border-box;
+            /* padding: 0;
+            margin: 0; */
+          }
+          .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 500,
+            'GRAD' 0,
+            'opsz' 24
+          }
+
+            body {
+                font-family: "K2D",sans-serif;
+                font-weight: 500;
+                font-style: normal;
+                background: #181818;
+                color: #EFEFEF;
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section.main {
+                display: flex;
+                align-items: center;
+                
+            }
+
+            #menu,section.main {
+                flex-direction: column;
+            }
+
+            #menu {
+                visibility: hidden;
+                flex-wrap: nowrap;
+                background: #363636;
+                padding: 8px;
+                border-radius: 6px;
+                margin-top: -10px;
+                max-height: 0;
+                height: fit-content;
+                transition: 0.3s ease-out;
+                overflow-y: scroll;
+            }
+
+            #content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: fit-content;
+            }
+            #sidebar{
+              width: 100%;
+            }
+
+            figure {
+                padding: 0px;
+                margin: 0;
+                -webkit-margin-before: 0;
+                margin-block-start: 0;
+                -webkit-margin-after: 0;
+                margin-block-end: 0;
+                -webkit-margin-start: 0;
+                margin-inline-start: 0;
+                -webkit-margin-end: 0;
+                margin-inline-end: 0
+            }
+
+            figure img {
+                display: block;
+                width: 100%;
+                height: auto;
+                border-radius: 4px;
+                margin-top: 8px;
+            }
+            #showResult{
+              width: 100%; 
+              display:none;
+              max-width: 100%;
+            }
+            @media (min-width: 800px) and (orientation:landscape) {
+              #showResult{
+                width: 100%;
+                display:none;
+                max-width: 680px;
+              }  
+              #content {
+                    display:flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    width: fit-content;
+                }
+
+                figure img {
+                    display: block;
+                    max-width: 100%;
+                    max-height: calc(100vh - 40px);
+                    width: auto;
+                    height: auto
+                }
+
+                figure {
+                    padding: 0 0 0 0px;
+                    margin: 0;
+                    -webkit-margin-before: 0;
+                    margin-block-start: 0;
+                    -webkit-margin-after: 0;
+                    margin-block-end: 0;
+                    -webkit-margin-start: 0;
+                    margin-inline-start: 0;
+                    -webkit-margin-end: 0;
+                    margin-inline-end: 0
+                }
+            }
+
+            section#buttons {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+
+            #nav-toggle {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            label .material-symbols-outlined{
+              transition: all 0.5s linear;
+            }
+            .rotate{
+              transform: rotate(180deg);
+            }
+            #nav-toggle nav,.toggle-section-label nav{
+              line-height: 1.6;
+            }
+
+            #nav-toggle-cb {
+                outline: 0;
+                opacity: 0;
+                width: 0;
+                height: 0
+            }
+
+            #nav-toggle-cb:checked+#menu {
+                display: flex;
+            }
+
+            .input-group {
+              position: relative;
+                display: flex;
+                flex-wrap: nowrap;
+                line-height: 22px;
+                margin: 5px 0
+            }
+
+            .input-group>label,#set-reg-group>label,#get-reg-group>label{
+                display: inline-block;
+                padding-right: 10px;
+                min-width: 47%
+            }
+
+            .input-group input,.input-group select {
+                flex-grow: 1
+            }
+            #set-reg-group,#get-reg-group{
+              position: relative;
+                display: flex;
+                flex-wrap: wrap;
+                line-height: 22px;
+                margin: 5px 0
+            }
+
+            .range-max,.range-min {
+                display: inline-block;
+                padding: 0 5px
+            }
+            
+
+            .buttonlink{
+                display: block;
+                text-decoration: none;
+                text-align: center;
+                padding: 0 12px;
+                border: 0;
+                line-height: 28px;
+                cursor: pointer;
+                color: #fff;
+                background: #040D12;
+                border-radius: 5px;
+                font-size: 16px;
+                outline: 0;
+                transition: all 0.2s ease-in;
+            }
+
+            #content :where(button, .button) {
+                display: block;
+                text-align: center;
+                padding: 0 12px;
+                border: 0;
+                line-height: 28px;
+                cursor: pointer;
+                color: #fff;
+                background: #040D12;
+                border-radius: 5px;
+                font-size: 16px;
+                outline: 0;
+                transition: all 0.2s ease-in;
+            }
+            #buttons :where(#toggle-stream){
+              display: block;
+            }
+            #buttons :where(#get-still,#save-still,#recordVideo){
+              display: none;
+            }
+            #buttons :where(#get-still,#save-still,#toggle-stream,#recordVideo,.face_enroll){
+                margin: 1vw;
+                padding: 12px;
+                border: 0;
+                cursor: pointer;
+                color: #fff;
+                background: #040D12;
+                border-radius: 50px;
+                outline: 0
+            }
+            #buttons i {
+              position: relative;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+            }
+            #face_enroll.disabled{
+              margin: 1vw;
+              padding: 12px;
+              border: 0;
+              color: #fff;
+              border-radius: 50px;
+              outline: 0;
+              cursor: default;
+              background: #a0a0a0;
+            }
+            
+            .save {
+                text-decoration: none;
+                cursor: pointer
+            }
+            .figure-container{
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+            }
+
+            #content :where(button:hover, .button:hover) {
+                background: #0F0F0F
+            }
+
+            #content :where(button:active,.button:active) {
+                background: #0C0C0C
+            }
+            .buttonlink:hover{
+              background: #0F0F0F
+            }
+            .buttonlink:active{
+              background: #0C0C0C
+            }
+
+            input[type=range] {
+              appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: 100%;
+                height: 3px;
+                background: transparent;
+                cursor: pointer;
+                margin-top: 9px;
+            }
+
+            input[type=range]:focus {
+                outline: 0
+            }
+
+            input[type=range]::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 0;
+                cursor: pointer;
+                background: transparent;
+                border-radius: 0;
+                border: 0 solid #EFEFEF
+            }
+
+            input[type=range]::-webkit-slider-thumb {
+                border: 1px solid rgba(0,0,30,0);
+                height: 22px;
+                width: 22px;
+                border-radius: 25px;
+                background: #040D12;
+                cursor: pointer;
+                -webkit-appearance: none;
+                margin-top: -11.5px
+            }
+
+            input[type=range]::-moz-range-track {
+                width: 100%;
+                height: 3px;
+                cursor: pointer;
+                background: #EFEFEF;
+                border-radius: 0;
+                border: 0 solid #EFEFEF
+            }
+            input[type=range]::-moz-range-progress {
+              background: #4caf50;
+            }
+
+            input[type=range]::-moz-range-thumb {
+                border: 1px solid rgba(0,0,30,0);
+                height: 22px;
+                width: 22px;
+                border-radius: 25px;
+                background: #040D12;
+                cursor: pointer
+            }
+
+            input[type=range]::-ms-track {
+                width: 100%;
+                height: 22px;
+                cursor: pointer;
+                background: 0 0;
+                border-color: transparent;
+                color: transparent
+            }
+
+            input[type=range]::-ms-fill-lower {
+                background: #EFEFEF;
+                border: 0 solid #EFEFEF;
+                border-radius: 0
+            }
+
+            input[type=range]::-ms-fill-upper {
+                background: #EFEFEF;
+                border: 0 solid #EFEFEF;
+                border-radius: 0
+            }
+
+            input[type=range]::-ms-thumb {
+                border: 1px solid rgba(0,0,30,0);
+                height: 22px;
+                width: 22px;
+                border-radius: 50px;
+                background: #040D12;
+                cursor: pointer;
+                height: 2px
+            }
+
+            .switch {
+                display: block;
+                position: relative;
+                line-height: 22px;
+                font-size: 16px;
+                height: 22px
+            }
+
+            .switch input {
+                outline: 0;
+                opacity: 0;
+                width: 0;
+                height: 0
+            }
+
+            .slider {
+                width: 50px;
+                height: 22px;
+                border-radius: 22px;
+                cursor: pointer;
+                background-color: grey
+            }
+
+            .slider,.slider:before {
+                display: inline-block;
+                transition: .4s
+            }
+
+            .slider:before {
+                position: relative;
+                content: "";
+                border-radius: 50%;
+                height: 16px;
+                width: 16px;
+                left: 4px;
+                top: 2.5px;
+                background-color: #fff
+            }
+
+            input:checked+.slider {
+                background-color: #040D12
+            }
+
+            input:checked+.slider:before {
+                -webkit-transform: translateX(26px);
+                transform: translateX(26px)
+            }
+
+            select {
+                border: 1px solid #363636;
+                font-size: 14px;
+                height: 22px;
+                outline: 0;
+                border-radius: 5px
+            }
+
+            .image-container {
+                position: relative;
+                /* min-width: 160px; */
+            }
+            .redon{
+              position: absolute;
+              top: 15px;
+              left: 50%;
+              transform: translateX(-50%);
+              color: #fff;
+              background-color: rgba(50, 55, 65,0.5);
+              padding: 0.5em;
+              border-radius: 10px;
+              outline: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .redon .circle{
+              background-color: rgb(255, 0, 0);
+              height: 1em;
+              width: 1em;
+              border-radius: 10px;
+              margin-right: 0.5em;
+              animation: flashing 2s ease-in-out infinite;
+            }
+            
+            @keyframes flashing {
+              0%{
+                opacity: 1;
+              }50%{
+                opacity: 0;
+              }100%{
+                opacity: 1;
+              }
+            }
+            .close {
+                position: absolute;
+                right: 7px;
+                top: 7px;
+                background: transparent;
+                color: #ff3034;
+                text-align: center;
+                line-height: 22px;
+                cursor: pointer
+            }
+
+            .hidden {
+                display: none
+            }
+
+            input[type=text] {
+                border: 1px solid #363636;
+                font-size: 14px;
+                height: 28px;
+                margin: 1px;
+                outline: 0;
+                border-radius: 5px
+            }
+
+            .inline-button {
+                line-height: 20px;
+                margin: 2px;
+                padding: 1px 4px 2px 4px;
+            }
+
+            label.toggle-section-label {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+
+            input.toggle-section-button {
+                outline: 0;
+                opacity: 0;
+                width: 0;
+                height: 0
+            }
+            section.toggle-section{
+              display: block;
+              visibility: hidden;
+              max-height: 0;
+              overflow: hidden;
+              height: fit-content;
+              transition: 0.3s ease-out;
+            }
+            /* input.toggle-section-button:checked+section.toggle-section {
+              visibility: hidden;
+              overflow: hidden;
+              transition: 0.3s ease-out;
+            } */
+            .dropdown{
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              width: 100%;
+            }
+            .selectdropdown{
+              background-color: #040D12;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              border: 2px #07161e solid;
+              border-radius: 0.5em;
+              padding: 0.5em;
+              cursor: pointer;
+              transition: background 0.3s;
+            }
+            .select-clicked {
+              border: 2px #26489a solid;
+              box-shadow: 0 0 0.8em #26489a;
+            }
+            .selectdropdown:hover{
+              background: #323741;
+            }
+            .caret{
+              width: 0;
+              height: 0;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 6px solid #fff;
+              transition: 0.3s;
+            }
+            .caret-rotate{
+              transform: rotate(180deg);
+            }
+            .menudropdown{
+              list-style: none;
+              padding: 0.2em 0.5em;
+              background-color: #040D12;
+              border: 1px #040D12 solid;
+              box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+              border-radius: 0.5em;
+              color: #9fa5b5;
+              position: absolute;
+              top: 2em;
+              z-index: 10;
+              left: 50%;
+              width: 100%;
+              transform: translateX(-50%);
+              opacity: 0;
+              display: none;
+              transition: all 0.2s;
+            }
+            .menudropdown li {
+              padding: 0.7em 0.5em;
+              margin: 0.3em 0;
+              border-radius: 0.5em;
+              cursor: pointer;
+            }
+            .menudropdown li:hover{
+              background-color: #2a2d35;
+            }
+            .active{
+              background-color: #23242a;
+            }
+            .menu-open{
+              display: block;
+              opacity: 1;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section class="main">
+            <div id="logo">
+                <label for="nav-toggle-cb" id="nav-toggle" class="nav-setting"><span class="material-symbols-outlined symbolrot">settings</span><nav>&nbsp;&nbsp;ตั้งค่ากล้อง</nav></label>
+            </div>
+            <div id="content">
+                <div id="sidebar">
+                    <input type="checkbox" id="nav-toggle-cb" checked="checked">
+                    <nav id="menu">
+                        <section id="xclk-section" class="nothidden">
+                            <div class="input-group" id="set-xclk-group">
+                                <label for="set-xclk">XCLK MHz</label>
+                                <div class="text">
+                                    <input id="xclk" type="text" minlength="1" maxlength="2" size="2" value="20">
+                                </div>
+                                <button class="inline-button" id="set-xclk">กำหนด</button>
+                            </div>
+                        </section>
+
+                        <div class="input-group" id="framesize-group">
+                            <label for="framesize">ความละเอียด/ความคมชัด</label>
+                            <div class="dropdown">
+                              <div class="selectdropdown">
+                                <div>
+                                  <span style="display: inline-block;" class="selected">VGA(640x480)</span>
+                                  <input type="hidden" class="default-action" value="8" name="" id="framesize" />
+                                  <div style="display: inline-block; margin-left: 6px;" class="caret"></div>
+                                </div>
+                              </div>
+                              <ul class="menudropdown" id="d1">
+                                <!-- 2MP -->
+                                <li value="13">UXGA(1600x1200)</li>
+                                <li value="12">SXGA(1280x1024)</li>
+                                <li value="11">HD(1280x720)</li>
+                                <li value="10">XGA(1024x768)</li>
+                                <li value="9">SVGA(800x600)</li>
+                                <li value="8" class="active">VGA(640x480)</li>
+                                <li value="7">HVGA(480x320)</li>
+                                <li value="6">CIF(400x296)</li>
+                                <li value="5">QVGA(320x240)</li>
+                                <li value="4">240x240</li>
+                                <li value="3">HQVGA(240x176)</li>
+                                <li value="2">QCIF(176x144)</li>
+                                <li value="1">QQVGA(160x120)</li>
+                                <li value="0">96x96</li>
+                              </ul>
+                            </div>
+                          </div>
+                        <div class="input-group" id="quality-group">
+                            <label for="quality">คุณภาพ</label>
+                            <div class="range-min">4</div>
+                            <input type="range" id="quality" oninput="updateSlider(this)" min="4" max="63" value="10" class="default-action">
+                            <div class="range-max">63</div>
+                        </div>
+                        <div class="input-group" id="brightness-group">
+                            <label for="brightness">ความสว่าง</label>
+                            <div class="range-min">-2</div>
+                            <input type="range" id="brightness" oninput="updateSlider(this)" min="-2" max="2" value="0" class="default-action">
+                            <div class="range-max">2</div>
+                        </div>
+                        <div class="input-group" id="contrast-group">
+                            <label for="contrast">การตัดกันของภาพสี</label>
+                            <div class="range-min">-2</div>
+                            <input type="range" id="contrast" oninput="updateSlider(this)" min="-2" max="2" value="0" class="default-action">
+                            <div class="range-max">2</div>
+                        </div>
+                        <div class="input-group" id="saturation-group">
+                            <label for="saturation">ความอิ่มตัว</label>
+                            <div class="range-min">-2</div>
+                            <input type="range" id="saturation" oninput="updateSlider(this)" min="-2" max="2" value="0" class="default-action">
+                            <div class="range-max">2</div>
+                        </div>
+                        <div class="input-group" id="special_effect-group">
+                            <label for="special_effect">เอฟเฟกต์พิเศษ</label>
+                            <div class="dropdown">
+                              <div class="selectdropdown">
+                                <div>
+                                  <span class="selected" style="display: inline-block;">ไม่มีเอฟเฟกต์</span>
+                                  <input type="hidden" id="special_effect" class="default-action" value="0" name="" />
+                                  <div class="caret" style="display: inline-block; margin-left: 6px;"></div>
+                                </div>
+                              </div>
+                              <ul class="menudropdown" id="d2">
+                                <li value="0" class="active">ไม่มีเอฟเฟกต์</li>
+                                <li value="1">แบบฟิล์มถ่ายรูป</li>
+                                <li value="2">แบบโทนสีเทา</li>
+                                <li value="3">แบบโทนสีแดง</li>
+                                <li value="4">แบบโทนสีเขียว</li>
+                                <li value="5">แบบโทนสีนํ้าเงิน</li>
+                                <li value="6">แบบหมึก</li>
+                              </ul>
+                            </div>
+                        </div>
+                        <div class="input-group" id="awb-group">
+                            <label for="awb">AWB</label>
+                            <div class="switch">
+                                <input id="awb" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="awb"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="awb_gain-group">
+                            <label for="awb_gain">ได้รับ AWB</label>
+                            <div class="switch">
+                                <input id="awb_gain" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="awb_gain"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="wb_mode-group">
+                            <label for="wb_mode">โหมด WB</label>
+                            <div class="dropdown">
+                              <div class="selectdropdown">
+                                <div>
+                                  <span class="selected" style="display: inline-block;">อัตโนมัติ</span>
+                                  <input type="hidden" id="wb_mode" class="default-action" value="0" name="" />
+                                  <div class="caret" style="display: inline-block; margin-left: 6px;"></div>
+                                </div>
+                              </div>
+                              <ul class="menudropdown" id="d3">
+                                <li value="0" class="active">อัตโนมัติ</li>
+                                <li value="1">อบอุ่น</li>
+                                <li value="2">มืดมัว</li>
+                                <li value="3">ออฟฟิศ</li>
+                                <li value="4">บ้าน</li>
+                              </ul>
+                            </div>
+                        </div>
+                        <div class="input-group" id="aec-group">
+                            <label for="aec">เซ็นเซอร์ AEC</label>
+                            <div class="switch">
+                                <input id="aec" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="aec"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="aec2-group">
+                            <label for="aec2">AEC DSP</label>
+                            <div class="switch">
+                                <input id="aec2" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="aec2"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="ae_level-group">
+                            <label for="ae_level">ชั้น AE</label>
+                            <div class="range-min">-2</div>
+                            <input type="range" id="ae_level" oninput="updateSlider(this)" min="-2" max="2" value="0" class="default-action">
+                            <div class="range-max">2</div>
+                        </div>
+                        <div class="input-group" id="aec_value-group">
+                            <label for="aec_value">การเปิดเผย</label>
+                            <div class="range-min">0</div>
+                            <input type="range" id="aec_value" oninput="updateSlider(this)" min="0" max="1200" value="204" class="default-action">
+                            <div class="range-max">1200</div>
+                        </div>
+                        <div class="input-group" id="agc-group">
+                            <label for="agc">AGC</label>
+                            <div class="switch">
+                                <input id="agc" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="agc"></label>
+                            </div>
+                        </div>
+                        <div class="input-group hidden" id="agc_gain-group">
+                            <label for="agc_gain">การรับ</label>
+                            <div class="range-min">1x</div>
+                            <input type="range" id="agc_gain" oninput="updateSlider(this)" min="0" max="30" value="5" class="default-action">
+                            <div class="range-max">31x</div>
+                        </div>
+                        <div class="input-group" id="gainceiling-group">
+                            <label for="gainceiling">การรับตัวเพดาน</label>
+                            <div class="range-min">2x</div>
+                            <input type="range" id="gainceiling" oninput="updateSlider(this)" min="0" max="6" value="0" class="default-action">
+                            <div class="range-max">128x</div>
+                        </div>
+                        <div class="input-group" id="bpc-group">
+                            <label for="bpc">BPC</label>
+                            <div class="switch">
+                                <input id="bpc" type="checkbox" class="default-action">
+                                <label class="slider" for="bpc"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="wpc-group">
+                            <label for="wpc">WPC</label>
+                            <div class="switch">
+                                <input id="wpc" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="wpc"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="raw_gma-group">
+                            <label for="raw_gma">แนวแถว GMA</label>
+                            <div class="switch">
+                                <input id="raw_gma" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="raw_gma"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="lenc-group">
+                            <label for="lenc">การแก้ไขเลนส์</label>
+                            <div class="switch">
+                                <input id="lenc" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="lenc"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="hmirror-group">
+                            <label for="hmirror">การสะท้อนภาพ</label>
+                            <div class="switch">
+                                <input id="hmirror" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="hmirror"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="vflip-group">
+                            <label for="vflip">พลิกภาพ</label>
+                            <div class="switch">
+                                <input id="vflip" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="vflip"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="dcw-group">
+                            <label for="dcw">DCW (ลดขนาด EN)</label>
+                            <div class="switch">
+                                <input id="dcw" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="dcw"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="colorbar-group">
+                            <label for="colorbar">แถบสี</label>
+                            <div class="switch">
+                                <input id="colorbar" type="checkbox" class="default-action">
+                                <label class="slider" for="colorbar"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="led-group">
+                          <label for="led_intensity">ความเข้มข้นของหลอดไฟ LED</label>
+                          <div class="range-min">0</div>
+                          <input type="range" id="led_intensity" oninput="updateSlider(this)" min="0" max="255" value="0" class="default-action">
+                          <div class="range-max">255</div>
+                        </div>
+
+                        <div class="input-group" id="regis_detect-group">
+                            <label for="regis_detect">ลงทะเบียนใบหน้า</label>
+                            <div class="switch">
+                                <input id="regis_detect" type="checkbox" class="notdefault-action">
+                                <label class="slider" for="regis_detect"></label>
+                            </div>
+                        </div>
+                        <div class="input-group hidden" id="face_detect-group">
+                            <label for="face_detect">การตรวจจับในหน้า</label>
+                            <div class="switch">
+                                <input id="face_detect" type="checkbox" class="default-action">
+                                <label class="slider" for="face_detect"></label>
+                            </div>
+                        </div>
+                        <div class="input-group hidden" id="face_recognize-group">
+                            <label for="face_recognize">การจดจำใบหน้า</label>
+                            <div class="switch">
+                                <input id="face_recognize" type="checkbox" class="default-action">
+                                <label class="slider" for="face_recognize"></label>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 8px;"><center><span style="font-weight: bold;">การตั้งค่าขั้นสูง</span></center></div>
+                        <hr style="width:100%">
+                        <label for="nav-toggle-reg" class="toggle-section-label nav-setting"><span class="material-symbols-outlined symbolrot">settings</span><nav>&nbsp;&nbsp;ลงทะเบียน รับ/ตั้งค่า</nav></label><input type="checkbox" id="nav-toggle-reg" class="hidden toggle-section-button" checked="checked">
+                        <section class="toggle-section">
+                            <!--h4>Set Register</h4-->
+                            <div class="" id="set-reg-group">
+                                <label for="set-reg">ลงทะเบียน,หน้ากาก,ค่า</label>
+                                <div class="text">
+                                    <input id="reg-addr" type="text" minlength="4" maxlength="6" size="6" value="0x111">
+                                </div>
+                                <div class="text">
+                                    <input id="reg-mask" type="text" minlength="4" maxlength="4" size="4" value="0x80">
+                                </div>
+                                <div class="text">
+                                    <input id="reg-value" type="text" minlength="4" maxlength="4" size="4" value="0x80">
+                                </div>
+                                <button class="inline-button" id="set-reg">กำหนด</button>
+                            </div>
+                            <hr style="width:50%">
+                            <!--h4>Get Register</h4-->
+                            <div class="" id="get-reg-group">
+                                <label for="get-reg">ลงทะเบียน, หน้ากาก</label>
+                                <div class="text">
+                                    <input id="get-reg-addr" type="text" minlength="4" maxlength="6" size="6" value="0x111">
+                                </div>
+                                <div class="text">
+                                    <input id="get-reg-mask" type="text" minlength="4" maxlength="6" size="6" value="0x80">
+                                </div>
+                                <button class="inline-button" id="get-reg">รับ</button>
+                            </div>
+                            <div class="input-group">
+                                <label for="get-reg-value">ค่า</label>
+                                <div class="text">
+                                    <span id="get-reg-value">0x1234</span>
+                                </div>
+                            </div>
+                        </section>
+                        <hr style="width:100%">
+                        <label for="nav-toggle-2640pll" class="toggle-section-label nav-setting"><span class="material-symbols-outlined symbolrot">settings</span><nav>&nbsp;&nbsp;CLK</nav></label><input type="checkbox" id="nav-toggle-2640pll" class="hidden toggle-section-button" checked="checked">
+                        <section class="toggle-section">
+
+                            <div class="input-group"><label for="2640pll1">CLK 2X</label><div class="switch"><input id="2640pll1" type="checkbox" class="reg-action" reg="0x111" offset="7" mask="0x01"><label class="slider" for="2640pll1"></label></div></div>
+
+                            <div class="input-group"><label for="2640pll3">CLK DIV</label><div class="text">0<input id="2640pll3" type="text" minlength="1" maxlength="2" size="2" value="1" class="reg-action" reg="0x111" offset="0" mask="0x3f">63</div></div>
+                            <div class="input-group"><label for="2640pll5">PCLK อัตโนมัติ</label><div class="switch"><input id="2640pll5" type="checkbox" class="reg-action" reg="0xd3" offset="7" mask="0x01"><label class="slider" for="2640pll5"></label></div></div>
+                            <div class="input-group"><label for="2640pll4">PCLK DIV</label><div class="text">0<input id="2640pll4" type="text" minlength="1" maxlength="3" size="3" value="4" class="reg-action" reg="0xd3" offset="0" mask="0x7f">127</div></div>
+
+                        </section>
+                        <hr style="width:100%">
+                        <label for="nav-toggle-win" class="toggle-section-label nav-setting"><span class="material-symbols-outlined symbolrot">settings</span><nav>&nbsp;&nbsp;หน้าต่าง</nav></label><input type="checkbox" id="nav-toggle-win" class="hidden toggle-section-button" checked="checked">
+                        <section class="toggle-section">
+                            <div class="input-group">
+                              <label for="start-x">เซ็นเซอร์ความละเอียด</label>
+                              <div class="dropdown">
+                                <div class="selectdropdown">
+                                  <div>
+                                    <span class="selected" style="display: inline-block;">UXGA (1600x1200)</span>
+                                    <input type="hidden" id="start-x" class="nodefault-action" value="0" name="" />
+                                    <div class="caret" style="display: inline-block; margin-left: 6px;"></div>
+                                  </div>
+                                </div>
+                                <ul class="menudropdown" id="d4">
+                                  <li value="0" class="active">UXGA (1600x1200)</li>
+                                  <li value="1">SVGA (800x600)</li>
+                                  <li value="2">CIF (400x296)</li>
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div class="input-group" id="set-offset-res-group">
+                                <label for="offset-x">สาขา/ส่วนขยาย</label>
+                                <div class="text">
+                                    X:<input id="offset-x" type="text" minlength="1" maxlength="3" size="6" value="400">
+                                </div>
+                                <div class="text">
+                                    Y:<input id="offset-y" type="text" minlength="1" maxlength="3" size="6" value="300">
+                                </div>
+                            </div>
+                            <div class="input-group" id="set-total-res-group">
+                                <label for="total-x">ขนาดหน้าต่าง</label>
+                                <div class="text">
+                                    X:<input id="total-x" type="text" minlength="1" maxlength="4" size="6" value="800">
+                                </div>
+                                <div class="text">
+                                    Y:<input id="total-y" type="text" minlength="1" maxlength="4" size="6" value="600">
+                                </div>
+                            </div>
+                            <div class="input-group" id="set-output-res-group">
+                                <label for="output-x">ขนาดเอาท์พุต</label>
+                                <div class="text">
+                                    X:<input id="output-x" type="text" minlength="1" maxlength="4" size="6" value="320">
+                                </div>
+                                <div class="text">
+                                    Y:<input id="output-y" type="text" minlength="1" maxlength="4" size="6" value="240">
+                                </div>
+                            </div>
+                            <button id="set-resolution">ตั้งค่าความละเอียด</button>
+                        </section>
+                    </nav>
+                </div>
+              </div>
+              <figure class="figure-container image-container">
+                  <div id="stream-container" class="hidden">
+                    <span class="redon hidden"><div class="circle"></div><div class="recording">0.00</div></span>
+                    <div class="close" id="close-stream"><i class='bx bx-x bx-sm'></i></div>
+                    <img id="stream" src="" crossorigin>
+                  </div>
+                  <section id="buttons">
+                    <button id="get-still"><i class='bx bxs-image-alt bx-lg bx-flashing-hover'></i></button>
+                    <a id="save-still" href="#" class="save" download="Capture_Dron_FPV.jpg"><i class='bx bxs-camera bx-lg bx-flashing-hover' ></i></a>
+                    <button id="recordVideo" class="" ><i class='bx bxs-video-recording bx-lg bx-flashing-hover'></i></button>
+                    <button id="toggle-stream"><i class='bx bx-play-circle bx-lg bx-flashing-hover' ></i></button>
+                    <button id="face_enroll" class="disabled hidden" disabled="disabled" ><i class='bx bxs-registered bx-lg bx-flashing-hover' ></i></button>
+                </section>
+              </figure>
+              <h2 id="telltext" style="display:none; margin: 6px 0px;"><b>วิดีโอที่บันทึกได้</b><a id="closeVideo" style="display: inline; margin: 0px 0px 0px 8px;" class="buttonlink">ปิด</a></h2>
+              <video id="showResult" controls>
+               การบันทึกวิดีโอนี้ไม่สนับสนุน ใน IOS และ Safari หรืออะไรก็ตามที่เกี่ยวกับผลิตภัณฑ์ของApple 
+              </video>
+              <a id="downloadwebM" class="buttonlink" style="display:none; margin: 6px 0px;" download="video.webm">ดาวน์โหลด Video webM</a>
+              <a id="downloadmp4" class="buttonlink" style="display:none;" download="video.mp4">ดาวน์โหลด Video mp4</a>
+              <canvas id="canvas" style="display:none;"></canvas>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+          updateSlider = (slider) => {
+          const max = slider.max;
+          const value = slider.value; // ค่าปัจจุบันของ slider
+          const percentage = ((value / max) * 100);
+          // อัปเดต background gradient
+          slider.style.background = `linear-gradient(to right, #4caf50 ${percentage}%, #EFEFEF ${percentage}%)`;
+        }
+document.addEventListener('DOMContentLoaded', function (event) {
+  const contentmenu = document.querySelector('#menu');
+  const contentsection = document.querySelectorAll('.toggle-section');
+  const menuRotate = document.querySelectorAll('.symbolrot');
+  const clickmenu = document.querySelectorAll('.nav-setting');
+
+  clickmenu.forEach((clicked,index) => { 
+    clicked.onclick = () => {
+      menuRotate[index].classList.toggle('rotate');
+      if(index===0){
+        if (contentmenu.style.maxHeight) {
+          contentmenu.style.maxHeight = null;
+          contentmenu.style.visibility = "hidden";
+        }else{
+          contentmenu.style.maxHeight = 500 + "px";
+          contentmenu.style.visibility = "visible";
+        }
+      }else{
+          if (contentsection[index-1].style.maxHeight) {
+            contentsection[index-1].style.maxHeight = null;
+            contentsection[index-1].style.visibility = "hidden";
+            contentsection[index-1].style.overflow = "hidden";
+          }else{
+            contentsection[index-1].style.maxHeight = contentsection[index-1].scrollHeight + "px";
+            contentsection[index-1].style.visibility = "visible";
+            contentsection[index-1].style.overflow = "visible";
+          }
+      }
+    }
+  })
+  const checkrisyet = document.querySelector('#regis_detect');
+  const face_detect = document.querySelector('#face_detect-group');
+  const face_recognize = document.querySelector('#face_recognize-group');
+  const face_enroll = document.querySelector('#face_enroll');
+  checkrisyet.onchange = () => {
+    if(checkrisyet.checked){
+      face_detect.classList.remove('hidden');
+      face_recognize.classList.remove('hidden');
+      face_enroll.classList.remove('hidden');
+      // if(window.getComputedStyle(face_enroll).display === 'block' && window.getComputedStyle(streamButton).display === 'block' && window.getComputedStyle(recordVideoButton).display === 'block' && window.getComputedStyle(saveButton).display === 'block' && window.getComputedStyle(stillButton).display === 'block'){
+      //   face_enroll.firstElementChild.classList.replace('bx-lg','bx-md');
+      //   streamButton.firstElementChild.classList.replace('bx-lg','bx-md');
+      //   recordVideoButton.firstElementChild.classList.replace('bx-lg','bx-md');
+      //   saveButton.firstElementChild.classList.replace('bx-lg','bx-md');
+      //   stillButton.firstElementChild.classList.replace('bx-lg','bx-md');
+      // }
+    }else{
+      // if(window.getComputedStyle(face_enroll).display === 'block' && window.getComputedStyle(streamButton).display === 'block' && window.getComputedStyle(recordVideoButton).display === 'block' && window.getComputedStyle(saveButton).display === 'block' && window.getComputedStyle(stillButton).display === 'block'){
+      //   face_enroll.firstElementChild.classList.replace('bx-md','bx-lg');
+      //   streamButton.firstElementChild.classList.replace('bx-md','bx-lg');
+      //   recordVideoButton.firstElementChild.classList.replace('bx-md','bx-lg');
+      //   saveButton.firstElementChild.classList.replace('bx-md','bx-lg');
+      //   stillButton.firstElementChild.classList.replace('bx-md','bx-lg');
+      // }
+      face_detect.classList.add('hidden');
+      face_recognize.classList.add('hidden');
+      face_enroll.classList.add('hidden');
+      updateValue(detect, false)
+      updateValue(recognize, false)
+      disable(enrollButton)
+    }
+  }
+  document.querySelectorAll('input[type="range"]').forEach((input) => updateSlider(input));
+  const resolution = new Array(
+    [1600,1280,1280,1024,800,640,480,400,320,240,240,176,160,96],//width
+    [1200,1024,720,768,600,480,320,296,240,240,176,144,120,96]//height
+  );
+  resolution[0].reverse();
+  resolution[1].reverse();
+  let literally_height = 8;
+  let literally_width = 8;
+  const dropdowns = document.querySelectorAll('.dropdown');
+  dropdowns.forEach(dropdown => {
+    const select = dropdown.querySelector('.selectdropdown');
+    const caret = dropdown.querySelector('.caret');
+    const menu = dropdown.querySelector('.menudropdown');
+    const options = dropdown.querySelectorAll('.menudropdown li');
+    const selected = dropdown.querySelector('.selected');
+    const value = dropdown.querySelector('#framesize');
+    const value2 = dropdown.querySelector('#special_effect');
+    const value3 = dropdown.querySelector('#wb_mode');
+    
+    select.addEventListener('click', () => {
+      select.classList.toggle('select-clicked');
+      caret.classList.toggle('caret-rotate');
+      menu.classList.toggle('menu-open');
+    })
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        selected.innerText = option.innerText;
+        if(value){
+          value.value = option.value;
+          literally_height = option.value;
+          literally_width = option.value;
+        }
+        if(value2){
+          value2.value = option.value;
+          //console.log(value2.value)
+        }
+        if(value3){
+          value3.value = option.value;
+          // console.log(value3.value)
+        }
+        select.classList.remove('select-clicked');
+        caret.classList.remove('caret-rotate');
+        menu.classList.remove('menu-open');
+        options.forEach(option => {
+          option.classList.remove('active');
+        });
+        option.classList.add('active');
+      });
+      
+    });
+  });
+  var baseHost = document.location.origin
+  var streamUrl = baseHost + ':81'
+
+  function fetchUrl(url, cb){
+    fetch(url)
+      .then(function (response) {
+        if (response.status !== 200) {
+          cb(response.status, response.statusText);
+        } else {
+          response.text().then(function(data){
+            cb(200, data);
+          }).catch(function(err) {
+            cb(-1, err);
+          });
+        }
+      })
+      .catch(function(err) {
+        cb(-1, err);
+      });
+  }
+
+  function setReg(reg, offset, mask, value, cb){
+    //console.log('Set Reg', '0x'+reg.toString(16), offset, '0x'+mask.toString(16), '0x'+value.toString(16), '('+value+')');
+    value = (value & mask) << offset;
+    mask = mask << offset;
+    fetchUrl(`${baseHost}/reg?reg=${reg}&mask=${mask}&val=${value}`, cb);
+  }
+
+  function getReg(reg, offset, mask, cb){
+    mask = mask << offset;
+    fetchUrl(`${baseHost}/greg?reg=${reg}&mask=${mask}`, function(code, txt){
+      let value = 0;
+      if(code == 200){
+        value = parseInt(txt);
+        value = (value & mask) >> offset;
+        txt = ''+value;
+      }
+      cb(code, txt);
+    });
+  }
+
+  function setXclk(xclk, cb){
+    fetchUrl(`${baseHost}/xclk?xclk=${xclk}`, cb);
+  }
+
+  function setWindow(start_x, start_y, end_x, end_y, offset_x, offset_y, total_x, total_y, output_x, output_y, scaling, binning, cb){
+    fetchUrl(`${baseHost}/resolution?sx=${start_x}&sy=${start_y}&ex=${end_x}&ey=${end_y}&offx=${offset_x}&offy=${offset_y}&tx=${total_x}&ty=${total_y}&ox=${output_x}&oy=${output_y}&scale=${scaling}&binning=${binning}`, cb);
+  }
+
+  const setRegButton = document.getElementById('set-reg')
+  setRegButton.onclick = () => {
+    let reg = parseInt(document.getElementById('reg-addr').value);
+    let mask = parseInt(document.getElementById('reg-mask').value);
+    let value = parseInt(document.getElementById('reg-value').value);
+
+    setReg(reg, 0, mask, value, function(code, txt){
+      if(code != 200){
+        alert('Error['+code+']: '+txt);
+      }
+    });
+  }
+
+  const getRegButton = document.getElementById('get-reg')
+  getRegButton.onclick = () => {
+    let reg = parseInt(document.getElementById('get-reg-addr').value);
+    let mask = parseInt(document.getElementById('get-reg-mask').value);
+    let value = document.getElementById('get-reg-value');
+
+    getReg(reg, 0, mask, function(code, txt){
+      if(code != 200){
+        value.innerHTML = 'Error['+code+']: '+txt;
+      } else {
+        value.innerHTML = '0x'+parseInt(txt).toString(16)+' ('+txt+')';
+      }
+    });
+  }
+
+  const setXclkButton = document.getElementById('set-xclk')
+  setXclkButton.onclick = () => {
+    let xclk = parseInt(document.getElementById('xclk').value);
+
+    setXclk(xclk, function(code, txt){
+      if(code != 200){
+        alert('Error['+code+']: '+txt);
+      }
+    });
+  }
+
+  const setResButton = document.getElementById('set-resolution')
+  setResButton.onclick = () => {
+    let start_x = parseInt(document.getElementById('start-x').value);
+    let offset_x = parseInt(document.getElementById('offset-x').value);
+    let offset_y = parseInt(document.getElementById('offset-y').value);
+    let total_x = parseInt(document.getElementById('total-x').value);
+    let total_y = parseInt(document.getElementById('total-y').value);
+    let output_x = parseInt(document.getElementById('output-x').value);
+    let output_y = parseInt(document.getElementById('output-y').value);
+
+    setWindow(start_x, 0, 0, 0, offset_x, offset_y, total_x, total_y, output_x, output_y, false, false, function(code, txt){
+      if(code != 200){
+        alert('Error['+code+']: '+txt);
+      }
+    });
+  }
+
+  const setRegValue = (el) => {
+    //console.log("kutpon");
+    let reg = el.attributes.reg?parseInt(el.attributes.reg.nodeValue):0;
+    let offset = el.attributes.offset?parseInt(el.attributes.offset.nodeValue):0;
+    let mask = el.attributes.mask?parseInt(el.attributes.mask.nodeValue):255;
+    let value = 0;
+    switch (el.type) {
+      case 'checkbox':
+        value = el.checked ? mask : 0;
+        break;
+      case 'range':
+      case 'text':
+      case 'hidden':
+        value = el.value;
+        break
+      default:
+        return;
+    }
+
+    setReg(reg, offset, mask, value, function(code, txt){
+      if(code != 200){
+        alert('Error['+code+']: '+txt);
+      }
+    });
+  }
+
+  // Attach on change action for register elements
+  document
+    .querySelectorAll('.reg-action')
+    .forEach(el => {
+        if (el.type === 'text') {
+            el.onkeyup = function(e){
+                if(e.keyCode == 13){
+                    setRegValue(el);
+                }
+            }
+        } else {
+            el.onchange = () => setRegValue(el)
+        }
+    })
+
+
+  const updateRegValue = (el, value, updateRemote) => {
+    let initialValue;
+    let offset = el.attributes.offset?parseInt(el.attributes.offset.nodeValue):0;
+    let mask = (el.attributes.mask?parseInt(el.attributes.mask.nodeValue):255) << offset;
+    value = (value & mask) >> offset;
+    if (el.type === 'checkbox') {
+      initialValue = el.checked
+      value = !!value
+      el.checked = value
+    } else {
+      initialValue = el.value
+      el.value = value
+    }
+  }
+
+
+  const printReg = (el) => {
+    let reg = el.attributes.reg?parseInt(el.attributes.reg.nodeValue):0;
+    let offset = el.attributes.offset?parseInt(el.attributes.offset.nodeValue):0;
+    let mask = el.attributes.mask?parseInt(el.attributes.mask.nodeValue):255;
+    let value = 0;
+    switch (el.type) {
+      case 'checkbox':
+        value = el.checked ? mask : 0;
+        break;
+      case 'range':
+      case 'hidden':
+        value = el.value;
+        break
+      default:
+        return;
+    }
+    value = (value & mask) << offset;
+    return '0x'+reg.toString(16)+', 0x'+value.toString(16);
+  }
+
+
+
+  const hide = el => {
+    el.classList.add('hidden')
+  }
+  const show = el => {
+    el.classList.remove('hidden')
+  }
+
+  const disable = el => {
+    el.classList.add('disabled')
+    el.classList.remove('face_enroll')
+    el.disabled = true
+  }
+
+  const enable = el => {
+    el.classList.remove('disabled')
+    el.classList.add('face_enroll')
+    el.disabled = false
+  }
+
+  const updateValue = (el, value, updateRemote) => {
+    updateRemote = updateRemote == null ? true : updateRemote
+    let initialValue
+    if (el.type === 'checkbox') {
+      initialValue = el.checked
+      value = !!value
+      el.checked = value
+    } else {
+      initialValue = el.value
+      el.value = value
+    }
+
+    if (updateRemote && initialValue !== value) {
+      updateConfig(el);
+    } else if(!updateRemote){
+      if(el.id === "aec"){
+        value ? hide(exposure) : show(exposure)
+      } else if(el.id === "agc"){
+        if (value) {
+          show(gainCeiling)
+          hide(agcGain)
+        } else {
+          hide(gainCeiling)
+          show(agcGain)
+        }
+      } else if(el.id === "awb_gain"){
+        value ? show(wb) : hide(wb)
+      } else if(el.id === "face_recognize"){
+        value ? enable(enrollButton) : disable(enrollButton)
+      } else if(el.id == "led_intensity"){
+        value > -1 ? show(ledGroup) : hide(ledGroup)
+      }
+    }
+  }
+
+  function updateConfig (el) {
+    // console.log(el.type);
+    let value
+    switch (el.type) {
+      case 'checkbox':
+        value = el.checked ? 1 : 0
+        break
+      case 'range':
+      case 'hidden':
+        value = el.value
+        break
+      case 'button':
+      case 'submit':
+        value = '1'
+        break
+      default:
+        return
+    }
+
+    const query = `${baseHost}/control?var=${el.id}&val=${value}`
+
+    fetch(query)
+      .then(response => {
+        console.log(`request to ${query} finished, status: ${response.status}`)
+      })
+  }
+
+  document
+    .querySelectorAll('.close')
+    .forEach(el => {
+      el.onclick = () => {
+        hide(el.parentNode)
+      }
+    })
+
+  // read initial values
+  fetch(`${baseHost}/status`)
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (state) {
+      document
+        .querySelectorAll('.default-action')
+        .forEach(el => {
+          updateValue(el, state[el.id], false)
+        })
+      document
+        .querySelectorAll('.reg-action')
+        .forEach(el => {
+            let reg = el.attributes.reg?parseInt(el.attributes.reg.nodeValue):0;
+            if(reg == 0){
+              return;
+            }
+            updateRegValue(el, state['0x'+reg.toString(16)], false)
+        })
+    })
+
+  const view = document.getElementById('stream')
+  const viewContainer = document.getElementById('stream-container')
+  const stillButton = document.getElementById('get-still')
+  const streamButton = document.getElementById('toggle-stream')
+  const enrollButton = document.getElementById('face_enroll')
+  const closeButton = document.getElementById('close-stream')
+  const saveButton = document.getElementById('save-still')
+  const ledGroup = document.getElementById('led-group')
+  const recordVideoButton = document.getElementById('recordVideo')
+  const closeVideoButton = document.getElementById('closeVideo')
+
+  let toCommon = false;
+  //วิดีโอสตรีมมิ่ง ทดสอบ
+  
+  const stopStream = (lsclose = false) => {
+    window.stop();
+    streamButton.innerHTML = `<i class='bx bx-play-circle bx-lg bx-flashing-hover' ></i>`
+    saveButton.style.display = "none";
+    stillButton.style.display = "none";
+    recordVideoButton.style.display = "none";
+    if(lsclose){
+      hide(viewContainer)
+    }
+  }
+
+  const startStream = () => {
+    view.src = `${streamUrl}/stream`
+    show(viewContainer)
+    streamButton.innerHTML = `<i style="color:#ff0000;" class='bx bx-stop-circle bx-lg bx-flashing'></i>`
+    saveButton.style.display = "block";
+    stillButton.style.display = "block";
+    recordVideoButton.style.display = "block";
+  }
+
+  closeStrem = () => {
+    stopStream();
+    hide(viewContainer);
+    toCommon = false;
+  }
+  // Attach actions to buttons
+  stillButton.onclick = () => {
+    toCommon = true;
+    stopStream()
+    view.src = `${baseHost}/capture?_cb=${Date.now()}`
+    show(viewContainer)
+    saveButton.style.display = "block";
+    stillButton.style.display = "block";
+    recordVideoButton.style.display = "block";
+  }
+
+  closeButton.onclick = () => {
+    closeStrem()
+  }
+
+  streamButton.onclick = () => {
+    // console.log(streamButton.innerHTML);
+    const streamEnabled = streamButton.innerHTML === `<i style="color:#ff0000;" class="bx bx-stop-circle bx-lg bx-flashing"></i>`
+    if (streamEnabled) {
+      stopStream(true)
+    } else {
+      if(toCommon){
+        setTimeout(() => {
+          startStream()
+        },1000)
+        stopStream(true)
+        toCommon = false;
+      }else{
+        startStream()
+      }
+    }
+  }
+
+  enrollButton.onclick = () => {
+    updateConfig(enrollButton)
+  }
+
+  saveButton.onclick = () => {
+      var canvas = document.createElement("canvas");
+      // console.log("width " + view.width + " height " + view.height);
+      // canvas.width = view.width;
+      // canvas.height = view.height;
+      // console.log(resolution[0][literally_width] + " " + resolution[1][literally_height])
+      canvas.width = resolution[0][literally_width];
+      canvas.height = resolution[1][literally_height];
+      document.body.appendChild(canvas);
+      var context = canvas.getContext('2d');
+      context.drawImage(view,0,0);
+      try {
+        var dataURL = canvas.toDataURL('image/jpeg');
+        saveButton.href = dataURL;
+        var d = new Date();
+        saveButton.download = d.getFullYear() + ("0"+(d.getMonth()+1)).slice(-2) + ("0" + d.getDate()).slice(-2) + ("0" + d.getHours()).slice(-2) + ("0" + d.getMinutes()).slice(-2) + ("0" + d.getSeconds()).slice(-2) + ".jpg";
+      } catch (e) {
+        console.error(e);
+      }
+      canvas.parentNode.removeChild(canvas);
+}
+const showVideo = document.getElementById('showResult');
+const allButton = document.getElementById('buttons');
+
+let files = new Array();
+CavasRecord = () => {
+  var canvas = document.createElement("canvas");
+  canvas.width = resolution[0][literally_width];
+  canvas.height = resolution[1][literally_height];
+  document.body.appendChild(canvas);
+  var context = canvas.getContext('2d');
+  context.drawImage(view,0,0);
+  try {
+    var dataURL = canvas.toDataURL('image/jpeg');
+    files.push(dataURL);
+  } catch (e) {
+    console.error(e);
+  }
+  canvas.parentNode.removeChild(canvas);
+}
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const downloadLink = document.getElementById('downloadwebM');
+
+canvas.width = resolution[0][literally_width];
+canvas.height = resolution[1][literally_height];
+
+async function createVideo() {
+  const stream = canvas.captureStream(30); // 30 fps
+  const recorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+  const chunks = [];
+
+  recorder.ondataavailable = (event) => chunks.push(event.data);
+  recorder.start();
+
+  for (const imageUrl of files) {
+    const img = await loadImage(imageUrl);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    await delay(100); // แสดงแต่ละรูปเป็นเวลา 1 วินาที
+  }
+
+  recorder.stop();
+
+  return new Promise((resolve) => {
+    recorder.onstop = () => {
+      const blob = new Blob(chunks, { type: 'video/webm' });
+      resolve(blob);
+    };
+  });
+}
+
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+const text = document.getElementById('telltext');
+closeVideoButton.onclick = () => {
+  downloadLink.style.display = 'none';
+  showVideo.style.display = 'none';
+  text.style.display = 'none';
+}
+
+let isRecord = false;
+let myInterval;
+let timer;
+let minute = 0;
+let seconds = 0; // ตัวแปรเก็บจำนวนวินาที
+const recording = document.getElementsByClassName('recording')[0];
+const redon = document.getElementsByClassName('redon')[0];
+recordVideoButton.addEventListener('click', async () => {
+      isRecord = !isRecord;
+      if(isRecord === true){
+        allButton.style.justifyContent="center";
+        recordVideoButton.innerHTML = `<i style="color:#ff0000;" class='bx bx-stop-circle bx-lg bx-flashing'></i>`
+        saveButton.style.display = "none";
+        stillButton.style.display = "none";
+        streamButton.style.display = "none";
+        redon.classList.toggle("hidden");
+        myInterval = setInterval(CavasRecord,100);
+        
+        timer = setInterval(() => {
+          seconds++; // เพิ่มค่า seconds ทีละ 1
+          if(60 / seconds === 1){
+            seconds = 0;
+            minute++;
+          }else{
+            if(seconds <= 9){
+              recording.innerText = `${minute}.0${seconds}`;
+            }
+            else if(seconds > 9){
+              recording.innerText = `${minute}.${seconds}`;
+            }
+          }
+        }, 1000); // 1000 มิลลิวินาที = 1 วินาที
+      }else{
+        streamButton.style.display = "block";
+        closeStrem();
+        allButton.style.justifyContent="space-between";
+        recording.innerText = `0.00`;
+        redon.classList.toggle("hidden");
+        seconds = 0;
+        clearInterval(timer);
+        clearInterval(myInterval);
+        recordVideoButton.innerHTML = `<i class='bx bxs-video-recording bx-lg bx-flashing-hover'></i>`
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false
+        });
+        Toast.fire({
+          icon: "info",
+          title: `กรุณารอสักครู่<label></label>`,
+          didOpen: () => {
+            let dotInterval,dotcount = 0;
+            const timer = Swal.getPopup().querySelector("label");
+            dotInterval = setInterval(() => {
+              if(dotcount === 4){
+                timer.textContent = `.`;
+                dotcount = 0;
+              }else{
+                timer.textContent += `.`;
+              }
+              dotcount++;
+            }, 1000);
+          },
+          willClose: () => {
+            clearInterval(dotInterval);
+          }
+        });
+        
+        const videoBlob = await createVideo();
+        const url = URL.createObjectURL(videoBlob);
+        const source = document.createElement('source');
+        source.src = url;
+        source.type = 'video/webm';
+        source.className = "webM";
+        if(!(showVideo.children.length > 0)){
+          showVideo.appendChild(source);
+        }else{
+          const source_Old = document.querySelector(".webM");
+          showVideo.replaceChild(source, source_Old);
+        }
+        showVideo.style.display = 'block';
+        text.style.display = 'inline';
+        showVideo.load(); // โหลดวิดีโอใหม่
+        showVideo.play(); // เล่นวิดีโออัตโนมัติ
+        downloadLink.href = url;
+        downloadLink.style.display = 'block';
+        files = [];
+          Toast.fire({
+            icon: "success",
+            title: "สำเร็จแล้ว",
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+      }
+})
+
+  // Attach default on change action
+  const defaultAction = document.querySelectorAll('.default-action')
+    defaultAction.forEach((el) => {
+      el.onchange = () => updateConfig(el)
+    })
+  const special_effect = document.getElementById('special_effect');
+  const d2 = document.querySelectorAll('#d2 li');
+  d2.forEach((ele) => {
+  ele.onclick = () => updateConfig(special_effect)
+  })
+
+  const wb_mode = document.getElementById('wb_mode');
+  const d3 = document.querySelectorAll('#d3 li');
+  d3.forEach((ele) => {
+  ele.onclick = () => updateConfig(wb_mode)
+  })
+
+  // Custom actions
+  // Gain
+  const agc = document.getElementById('agc')
+  const agcGain = document.getElementById('agc_gain-group')
+  const gainCeiling = document.getElementById('gainceiling-group')
+  agc.onchange = () => {
+    updateConfig(agc)
+    if (agc.checked) {
+      show(gainCeiling)
+      hide(agcGain)
+    } else {
+      hide(gainCeiling)
+      show(agcGain)
+    }
+  }
+
+  // Exposure
+  const aec = document.getElementById('aec')
+  const exposure = document.getElementById('aec_value-group')
+  aec.onchange = () => {
+    updateConfig(aec)
+    aec.checked ? hide(exposure) : show(exposure)
+  }
+
+  // AWB
+  const awb = document.getElementById('awb_gain')
+  const wb = document.getElementById('wb_mode-group')
+  awb.onchange = () => {
+    updateConfig(awb)
+    awb.checked ? show(wb) : hide(wb)
+  }
+
+  // Detection and framesize
+  const detect = document.getElementById('face_detect')
+  const recognize = document.getElementById('face_recognize')
+  const framesize = document.querySelector('#framesize')
+  const clicktosizechange = document.querySelectorAll('#d1 li')
+  //console.log(framesize.value);
+  clicktosizechange.forEach((sizef) => {
+    sizef.onclick = () => {
+      updateConfig(framesize)
+      if (framesize.value > 5) {
+        updateValue(detect, false)
+        updateValue(recognize, false)
+        // console.log(framesize.value);
+      }
+    }
+  });
+  detect.onchange = () => {
+    if (framesize.value > 5) {
+      Swal.fire({
+        title: "มีปัญหา",
+        text: "โปรดตั้งค่าให้ความละเอียดตํ่ากว่า CIF",
+        icon: "warning",
+        confirmButtonText: "เข้าใจแล้ว",
+        confirmButtonColor: "#123456"
+      });
+      updateValue(detect, false)
+      return;
+    }
+    updateConfig(detect)
+    if (!detect.checked) {
+      disable(enrollButton)
+      updateValue(recognize, false)
+    }
+  }
+  
+  recognize.onchange = () => {
+    if (framesize.value > 5) {
+      Swal.fire({
+        title: "มีปัญหา",
+        text: "โปรดตั้งค่าให้ความละเอียดตํ่ากว่า CIF",
+        icon: "warning",
+        confirmButtonText: "เข้าใจแล้ว",
+        confirmButtonColor: "#123456"
+      });
+      updateValue(recognize, false)
+      return;
+    }
+    updateConfig(recognize)
+    if (recognize.checked) {
+      enable(enrollButton)
+      updateValue(detect, true)
+    } else {
+      disable(enrollButton)
+    }
+  }
+  })
+        </script>
+    </body>
+</html>
+```
