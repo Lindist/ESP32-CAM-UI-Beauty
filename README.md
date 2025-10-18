@@ -1,5 +1,10 @@
 # การใช้งาน ESP32 CAM ร่วมกับ UI Web Server (Module ov2640)
+---
 
+> _looking at my blog is the best_
+> [My blogs](https://lindist.github.io/BlogerLindist/posts/Library-Stepper-Motor-(-Micropython-)).
+
+---
 ESP32 CAM โดยปกติจะสามารถใช้ร่วมกับ Arduino IDE ในการอัปโหลดโค้ดและรันคำสั่งการทำงาน ของตัวโปรแกรม
 
 การใช้งานจะกับบอร์ดเวอร์ชั่น 2.0.5 ต้องทำการอัปเดตหรือdownเกรด เป็นเวอร์ชั่น 2.0.5 โดยมีขั้นตอนดังนี้
@@ -1841,4 +1846,5 @@ recordVideoButton.addEventListener('click', async () => {
         </script>
     </body>
 </html>
+
 ```
